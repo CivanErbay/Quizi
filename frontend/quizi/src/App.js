@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useEffect, useState} from 'react';
 import './App.css';
+import {get10AnyEasyAny} from "./utils/quiz-api";
+
 
 function App() {
+    const [questionList, setQuestionList ] = useState([])
+
+    useEffect(() => {
+        let then = get10AnyEasyAny.then(response => {return response.data});
+        setQuestionList(then)
+    },[])
+
+    console.log(questionList)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Welcome to Quizi
+
     </div>
   );
 }
