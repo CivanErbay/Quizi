@@ -1,21 +1,14 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import './App.css';
-import {get10AnyEasyAny} from "./utils/quiz-api";
+import {Landing} from "./components/Landing";
+
 
 
 function App() {
-    const [questionList, setQuestionList ] = useState([])
 
-    useEffect(() => {
-        let then = get10AnyEasyAny.then(response => {return response.data});
-        setQuestionList(then)
-    },[])
-
-    console.log(questionList)
   return (
     <div className="App">
-      Welcome to Quizi
-
+    <Landing/>
     </div>
   );
 }

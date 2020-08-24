@@ -31,3 +31,16 @@ build/
 
 ### VS Code ###
 .vscode/
+src/utils/
+
+frontend/quizi/node_modules
+frontend/quizi/package-lock.json
+
+src/components/
+src/utils/general-utils.js
+frontend/quizi/src/components/
+frontend/quizi/src/utils/general-utils.js
+node_modules/
+package-lock.json
+src/main/resources/static/
+src/main/resources/templates/

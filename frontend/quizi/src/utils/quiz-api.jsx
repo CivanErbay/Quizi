@@ -1,8 +1,9 @@
-import axios from 'axios'
+const axios = require('axios').default;
 
 export const get10AnyEasyAny = () => {     //Number, Category, Difficulty, Type
 
-    const apiUrl = 'https://opentdb.com/api.php?amount=10';
-    return axios.get(apiUrl)
+    return axios.get('https://opentdb.com/api.php?amount=10').then(response => {
+        return response
+    })
 
 }
