@@ -1,28 +1,30 @@
+import React, { useState } from "react";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import {useDispatch} from "react-redux";
 import Box from "@material-ui/core/Box";
-import {Typography} from "@material-ui/core";
-import React, {useEffect, useState} from "react";
-import {get10AnyEasyAny} from "../utils/quiz-api";
-import {unescapeHtml} from "../utils/general-utils";
+import { useHistory} from "react-router-dom";
 
 
 export const Landing = () => {
 
+    const [usernameState, setUsernameState] = useState("")
+    const dispatch = useDispatch();
+    const history = useHistory();
 
+    const storeNameAndRouteChange = () => {
+        dispatch({type: 'NAMECHANGE', data: {name: usernameState}})
 
-    const [questionList, setQuestionList ] = useState(undefined)
-
-    useEffect(() => {
-        get10AnyEasyAny().then(r => setQuestionList(r.data.results))
-    },[])
+        let path = `/overview`;
+        history.push(path);
+    }
 
     return (
-        <>
-           <h1>Welcome to Quizi</h1>
-            <Box style={{height: "100vh"}}>
-                {questionList && questionList.map(question =>
-                    <Typography key={question.question}> {unescapeHtml(question.question)}</Typography>)}
-            </Box>
-        </>
+        <Box style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column", height: "100vh"}}>
+            <TextField placeholder="Your Name" value={usernameState} onChange={(event) => setUsernameState(event.target.value)}/>
+            <Button onClick={storeNameAndRouteChange}>GO</Button>
+
+        </Box>
     )
 }
 
